@@ -1,18 +1,56 @@
-<div class="search-wrapper">
-	<form
-		class="form-wrapper cf"
-		#searchCityForm="ngForm"
-		(ngSubmit)="onFormSubmit(searchCityForm)">
-	  	<input
-	  		type="text"
-	  		id="city"
-	  		placeholder="Enter city name..."
-	  		name="city"
-	  		ngModel
-	  		required>
-		  <button type="submit">Search</button>
-	</form>
-	<div class="message">
-		<p>{{ message }}</p>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="search-wrapper">
+				<form
+					class="form-wrapper cf"
+					#searchCityForm="ngForm"
+					(ngSubmit)="onFormSubmit(searchCityForm)">
+				  	<input
+				  		type="text"
+				  		id="city"
+				  		class="search-input"
+				  		placeholder="Enter city name..."
+				  		name="city"
+				  		ngModel
+				  		required>
+					  <button class="search-btn" type="submit">Search</button>
+				</form>
+				<div class="message">
+					<p>{{ message }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-lg-4 col-sm-6 col-xs-12 p-3" *ngFor="let city of cityData">
+			<div class="card" *ngIf="city" style="width: 18rem;">
+				<div class="card-body">
+					<h5 class="card-title">City: {{ city.title }}</h5>
+					<h6 class="card-subtitle mb-2 text-muted">LatLng: {{ city.latt_long }}</h6>
+					<h6 class="card-subtitle mb-2 text-muted">Onwater: {{ city.water?'On water': 'Not on water' }}</h6>
+					<p class="card-text">Weather Detail:</p>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">
+							Max temp: {{ city.consolidated_weather.max_temp | number : '1.2-2' }}
+						</li>
+						<li class="list-group-item">
+							Min temp: {{ city.consolidated_weather.min_temp | number : '1.2-2' }}
+						</li>
+						<li class="list-group-item">
+							Air pressure: {{ city.consolidated_weather.air_pressure | number : '1.2-2' }}
+						</li>
+						<li class="list-group-item">
+							Weather State: {{ city.consolidated_weather.weather_state_name }}
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div
+			class="spinner-border text-primary"
+			*ngIf="loading">
+			<span class="sr-only">Loading...</span>
+		</div>
 	</div>
 </div>

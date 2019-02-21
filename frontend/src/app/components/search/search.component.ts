@@ -10,6 +10,8 @@ import { SearchService } from '../../services/search.service';
 export class SearchComponent implements OnInit {
 
 	message:string = '';
+	cityData = [];
+	loading:boolean = false;
 	constructor(
 		public searchService:SearchService
 	){ }
@@ -24,14 +26,24 @@ export class SearchComponent implements OnInit {
 		}, 3000)
   }
 
-	onFormSubmit(formData) {
-
+	async onFormSubmit(formData) {
+		this.loading = true;
 		const searchText = formData.value.city;
 		if(!searchText) {
 			this.showErrorMessage('Please enter the city name!')
+			this.loading = false;
 			return;
 		}
-		this.searchService.fetchCityData(searchText)
+		try {
+
+			const fetchCityData = await this.searchService.fetchCityData(searchText).toPromise()
+			this.cityData = fetchCityData.json();
+			console.log(this.cityData);
+		} catch(err) {
+			this.showErrorMessage('Error fetching the data, please try some other keyword');
+		}
+
+		this.loading = false;
 	}
 
 }
