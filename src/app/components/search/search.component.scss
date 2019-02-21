@@ -22,9 +22,9 @@
     .cf{
       zoom:1;
     }
-
+    
     .form-wrapper {
-        width: 450px;
+    	width: 450px;
         padding: 15px;
         // margin: 150px auto 50px auto;
         margin:auto;
@@ -36,9 +36,7 @@
         -moz-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
         -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
         box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
-    }
-    
-    .form-wrapper {
+
     	input {
 	        width: 330px;
 	        height: 20px;
@@ -70,6 +68,7 @@
 	        float: right;
 	        border: 0;
 	        padding: 0;
+	        outline: none;
 	        cursor: pointer;
 	        height: 40px;
 	        width: 110px;
@@ -97,29 +96,23 @@
 		        top: 12px;
 		        left: -6px;
 		    }
+		    &:hover:before{
+		        border-right-color: #e54040;
+		    }
+		    &:focus:before{
+		        border-right-color: #c42f2f;
+		    }
 	    }
-    }
-    
-    .form-wrapper button:hover:before{
-        border-right-color: #e54040;
-    }
-    
-    .form-wrapper button:focus:before{
-        border-right-color: #c42f2f;
-    }    
-    
-    .form-wrapper button::-moz-focus-inner {
-        border: 0;
-        padding: 0;
-    }
-	.byline p{
+    }   
+
+	.message p{
 	  text-align:center;
-	  color:#c6c6c6;
+	  color:#d83c3c;
 	  font: bold 18px Arial, Helvetica, Sans-serif;
 	  text-shadow: 0 2px 3px rgba(0,0,0,0.1);
 	}
 
-	.byline p a{
+	.message p a{
 	  color:#d83c3c;
 	  text-decoration:none;
 	}

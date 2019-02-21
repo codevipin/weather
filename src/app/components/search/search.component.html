@@ -1,6 +1,18 @@
 <div class="search-wrapper">
-	<form class="form-wrapper cf">
-	  	<input type="text" placeholder="Search here..." required>
+	<form
+		class="form-wrapper cf"
+		#searchCityForm="ngForm"
+		(ngSubmit)="onFormSubmit(searchCityForm)">
+	  	<input
+	  		type="text"
+	  		id="city"
+	  		placeholder="Enter city name..."
+	  		name="city"
+	  		ngModel
+	  		required>
 		  <button type="submit">Search</button>
 	</form>
+	<div class="message">
+		<p>{{ message }}</p>
+	</div>
 </div>
