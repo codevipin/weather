@@ -28,7 +28,7 @@
 				<div class="card-body">
 					<h5 class="card-title">City: {{ city.title }}</h5>
 					<h6 class="card-subtitle mb-2 text-muted">LatLng: {{ city.latt_long }}</h6>
-					<h6 class="card-subtitle mb-2 text-muted">Onwater: {{ city.water?'On water': 'Not on water' }}</h6>
+					<h6 class="card-subtitle mb-2 text-muted">{{ city.water?'On water': 'Not on water' }}</h6>
 					<p class="card-text">Weather Detail:</p>
 					<ul class="list-group list-group-flush">
 						<li class="list-group-item">
